@@ -1,0 +1,28 @@
+<!-- <div class="container">
+  <app-cockpit
+  (serverCreated) = onServerAdded($event)
+  (blueprintCreated) = onBlueprintAdded($event)></app-cockpit>
+  
+  <hr>
+  <div class="row">
+    <app-cockpit-edit  *ngFor="let serverElement of serverElements"
+    [element] = serverElement ></app-cockpit-edit>
+  </div>
+</div> -->
+
+<!-- Game app -->
+<input type="text" (input)="update1($event)" />
+ <div class="container">
+   <div class="row">
+      <app-game 
+      (incrementVal) = updateVal($event)></app-game>
+   </div>
+  <div class="row" *ngFor = "let i of value">
+      <app-odd 
+      [oddVal] = i></app-odd>
+   </div>
+   <div class="row" *ngFor = "let i of value">
+      <app-even 
+      [evenVal] = i></app-even>
+   </div>
+ </div>

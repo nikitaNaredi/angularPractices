@@ -1,0 +1,17 @@
+{
+  "name": "test-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nikita Kumari",
+  "license": "ISC",
+  "dependencies": {
+    "express": "*"
+  },
+  "devDependencies": {
+    "@angular/core": "^8.2.14"
+  }
+}

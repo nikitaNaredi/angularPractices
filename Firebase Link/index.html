@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<style>
+    body {
+        background-color: #fafafa;
+        font-family: 'Roboto', sans-serif;
+    }
+    .container{
+        width: calc(100% - 100px);
+        margin: auto;
+        border: 1px solid rgba(0,0,0,.03);
+        box-shadow: 0 2px 2px rgba(0,0,0,.24),0 0 2px rgba(0,0,0,.12);
+        padding: 30px;
+    }
+    .filter-wrapper {
+        margin-bottom: 20px;
+    }
+    .filter-input {
+        width: calc(100% - 2px);
+        border: none;
+        border-bottom: 1px solid rgba(0, 0, 0, .42);
+        background-color: #fafafa;
+        padding-bottom: 3px;
+        transition: .05s box-shadow ease;
+    }
+    .filter-input:focus {
+        border-bottom: 1px solid rgb(24, 41, 134);
+        box-shadow: 0px 1px 1px 0px rgb(24, 41, 134);
+    }
+    .table-container {
+        box-shadow: 0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12);
+    }
+    .table-container > table {
+        width: 100%;
+        background-color: #ffffff;
+        border-collapse: collapse;
+    }
+    table thead tr {
+        height: 56px;
+        border-bottom: 1px solid #e0e0e0;
+    }
+    table tbody tr {
+        height: 48px;
+        border-bottom: 1px solid #e0e0e0;
+    }
+    table > thead > tr > th:first-child,
+    table > tbody > tr > td:first-child {
+        padding-left: 24px;
+    }
+    table > thead > tr > th:last-child,
+    table > tbody > tr > td:last-child {
+        padding-right: 24px;
+    }
+    table th {
+        text-align: left;
+        font-size: 12px;
+        font-weight: 500;
+        color: rgba(0,0,0,.54)
+    }
+    table td {
+        color: rgba(0,0,0,.87);
+        font-size: 14px;
+    }
+    .pagination-wrapper {
+        width: calc(100% - 1px);
+        display: flex;
+        justify-content: flex-end;
+
+    }
+    .pagination-item-wrapper {
+        display: flex;
+        height: 56px;
+        align-items: center;
+        margin-right: 20px;
+    }
+    .pagination-wrapper .range-wrapper {
+        padding: 0 25px;
+        font-size: 12px;
+        font-weight: 500;
+        color: rgba(0,0,0,.54);
+    }
+    .pagination-btn-wrapper i {
+        margin: auto 3px;
+    }
+
+</style>
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <div class="container">
+            <div class="table-filter-wrapper">
+                <div class="filter-wrapper">
+                    <input class="filter-input" type="text" placeholder="Filter" />
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email Id</th>
+                                <th>Address</th>
+                                <th>Created</th>
+                                <th>Balance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="rowItem in itemsArray | limitTo: 10">
+                                <td>{{rowItem.first}}</td>
+                                <td>{{rowItem.last}}</td>
+                                <td>{{rowItem.email}}</td>
+                                <td>{{rowItem.address}}</td>
+                                <td>{{rowItem.created}}</td>
+                                <td>{{rowItem.balance}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="pagination-wrapper">
+                        <div class="pagination-item-wrapper">
+                            <div class="range-wrapper">1 - 5 of 23</div>
+                            <div class="pagination-btn-wrapper">
+                                <i class="material-icons">first_page</i>
+                                <i class="material-icons">chevron_left</i>
+                                <i class="material-icons">chevron_right</i>
+                                <i class="material-icons">last_page</i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function($scope) {
+        $scope.itemsArray= [{"first":"Trever","last":"Shields","email":"lavendergiraffe48@gmail.com","address":"428 Rowe Run","created":"September 9, 2012","balance":"$793.50"},{"first":"Desiree","last":"Terry","email":"Desiree.Terry@tom.biz","address":"03345 Gerlach Drive","created":"April 1, 2014","balance":"$7,969.35"},{"first":"Jillian","last":"Lueilwitz","email":"Jillian.Lueilwitz@chaya.info","address":"1558 Schimmel Shoals","created":"October 20, 2011","balance":"$2,287.35"},{"first":"Caden","last":"Mitchell","email":"redwolf43@gmail.com","address":"008 Hauck Trail","created":"February 7, 2012","balance":"$5,841.87"},
+        {"first":"Oral","last":"Wolff","email":"Oral.Wolff@rebekah.info","address":"759 Von Centers","created":"February 11, 2017","balance":"$828.26"},{"first":"Shanelle","last":"Leannon","email":"Shanelle.Leannon@webster.org","address":"8009 Krista Harbor","created":"October 25, 2012","balance":"$7,296.62"},{"first":"Jordan","last":"Koepp","email":"Jordan.Koepp@jesus.info","address":"1750 Langworth Loaf","created":"December 31, 2011","balance":"$4,963.25"},{"first":"Petra","last":"Aufderhar","email":"tangiraffe91@gmail.com","address":"09559 Eichmann Lock","created":"December 30, 2012","balance":"$8,497.15"},
+        {"first":"Xavier","last":"Ortiz","email":"Xavier.Ortiz@emmie.name","address":"107 Wunsch Roads","created":"November 19, 2012","balance":"$4,245.18"},{"first":"Natasha","last":"Fahey","email":"Natasha.Fahey@patrick.org","address":"87709 Clemmie Lane","created":"December 10, 2014","balance":"$3,126.61"},{"first":"Casper","last":"Barton","email":"yellowwolf66@gmail.com","address":"91825 Dustin Flat","created":"November 28, 2014","balance":"$3,947.20"},{"first":"Ansel","last":"Dietrich","email":"Ansel.Dietrich@ernest.org","address":"3673 Nick Mill","created":"May 29, 2015","balance":"$2,289.68"},{"first":"Tremaine","last":"Wiza","email":"Tremaine.Wiza@brian.com","address":"68840 Gabriel Road","created":"August 21, 2018","balance":"$6,338.30"},
+        {"first":"Mae","last":"Herman","email":"goldsquirrel45@gmail.com","address":"79002 Mohammed Villages","created":"April 9, 2012","balance":"$9,186.96"},{"first":"Harmon","last":"Crooks","email":"purpleturtle52@gmail.com","address":"67525 Windler Manor","created":"July 6, 2017","balance":"$3,164.90"},
+        {"first":"Rosalee","last":"Beahan","email":"redturtle39@gmail.com","address":"2027 Felton Orchard","created":"February 23, 2014","balance":"$2,781.18"},{"first":"Jamaal","last":"Will","email":"yellowwolf14@gmail.com","address":"541 Hintz Neck","created":"October 8, 2015","balance":"$6,574.84"},{"first":"Joel","last":"Howell","email":"Joel.Howell@norwood.biz","address":"96099 Dane Motorway","created":"October 29, 2018","balance":"$6,115.11"},{"first":"May","last":"Hansen","email":"May.Hansen@mariah.com","address":"298 Mraz Drives","created":"April 23, 2013","balance":"$9,610.24"},{"first":"Dovie","last":"Robel","email":"Dovie.Robel@everett.biz","address":"80940 Ritchie Crest","created":"June 28, 2013","balance":"$1,686.44"},{"first":"Melvina","last":"Ryan","email":"Melvina.Ryan@elinor.net","address":"51248 Ignatius Ville","created":"May 8, 2015","balance":"$8,846.69"},
+        {"first":"Jude","last":"Shanahan","email":"Jude.Shanahan@reyna.net","address":"0011 Austen Manors","created":"March 3, 2017","balance":"$3,374.49"},{"first":"Horace","last":"Barton","email":"Horace.Barton@brody.net","address":"618 Kling Parks","created":"March 25, 2015","balance":"$8,553.82"},{"first":"Glenna","last":"Berge","email":"orchidwolf29@gmail.com","address":"737 Eileen Lock","created":"August 28, 2011","balance":"$3,447.05"},
+        {"first":"Darius","last":"Morissette","email":"Darius.Morissette@abner.info","address":"87145 Brown Row","created":"March 25, 2015","balance":"$8,804.14"},{"first":"Amira","last":"Walter","email":"tanturtle65@gmail.com","address":"92304 Kuvalis Rapids","created":"April 10, 2010","balance":"$433.04"},{"first":"Marge","last":"Jacobi","email":"azuregiraffe84@gmail.com","address":"6370 Barton Fork","created":"August 27, 2010","balance":"$7,379.00"},{"first":"Anita","last":"Bahringer","email":"Anita.Bahringer@evan.org","address":"9713 Verna Shores","created":"May 7, 2017","balance":"$527.31"},{"first":"Alexzander","last":"Gorczany","email":"Alexzander.Gorczany@cody.info","address":"52660 Luisa Unions","created":"July 7, 2011","balance":"$2,471.92"},{"first":"Kyra","last":"Dicki","email":"tangiraffe04@gmail.com","address":"7901 Rath Villages","created":"February 19, 2014","balance":"$9,128.52"},{"first":"Tatum","last":"Streich","email":"Tatum.Streich@rey.info","address":"81442 Jacobi Divide","created":"May 30, 2010","balance":"$2,903.18"},{"first":"Marcel","last":"Sporer","email":"goldgiraffe40@gmail.com","address":"1634 Waters Road","created":"May 18, 2010","balance":"$549.00"},{"first":"Adriana","last":"Bergnaum","email":"plumrabbit68@gmail.com","address":"89419 Howe Pines","created":"March 21, 2019","balance":"$2,302.37"},{"first":"Cesar","last":"Jacobi","email":"Cesar.Jacobi@maximillian.com","address":"9560 Cornelius Ramp","created":"April 28, 2010","balance":"$2,212.41"},{"first":"Maverick","last":"Lueilwitz","email":"Maverick.Lueilwitz@kayla.biz","address":"549 Lizeth Gateway","created":"September 21, 2013","balance":"$9,230.18"},{"first":"Tony","last":"Goldner","email":"Tony.Goldner@jameson.org","address":"6356 Jarrell Prairie","created":"July 14, 2014","balance":"$3,470.86"},
+        {"first":"Shyann","last":"Heller","email":"Shyann.Heller@orlando.com","address":"96027 Kohler Vista","created":"February 25, 2014","balance":"$7,474.45"},{"first":"Rafael","last":"Hane","email":"Rafael.Hane@raphael.biz","address":"53768 Pinkie Lights","created":"May 31, 2015","balance":"$2,175.83"},{"first":"Jarrett","last":"Fadel","email":"redgiraffe27@gmail.com","address":"691 Jakubowski Inlet","created":"February 27, 2011","balance":"$6,170.66"},{"first":"Tracy","last":"Keeling","email":"redrabbit77@gmail.com","address":"5323 Erdman Rest","created":"June 22, 2018","balance":"$4,634.49"},{"first":"Hayden","last":"Lind","email":"Hayden.Lind@mara.info","address":"51799 Lynch Fork","created":"December 5, 2009","balance":"$5,397.13"},{"first":"Bridget","last":"Lesch","email":"Bridget.Lesch@josue.info","address":"194 Anderson Passage","created":"November 22, 2017","balance":"$753.46"},{"first":"Angelina","last":"Fritsch","email":"mintgreengiraffe32@gmail.com","address":"0767 Nadia Estate","created":"September 29, 2015","balance":"$2,479.44"},{"first":"Roberto","last":"Spinka","email":"Roberto.Spinka@santos.com","address":"8926 Brionna Roads","created":"November 19, 2009","balance":"$9,075.18"},{"first":"Jammie","last":"Hermiston","email":"Jammie.Hermiston@morris.net","address":"0999 Chase Dale","created":"May 15, 2017","balance":"$1,761.00"},{"first":"Jadyn","last":"Weimann","email":"Jadyn.Weimann@guiseppe.org","address":"024 Feest Summit","created":"January 29, 2012","balance":"$8,461.09"},{"first":"Dahlia","last":"Wuckert","email":"Dahlia.Wuckert@mikel.org","address":"958 Courtney Lodge","created":"December 30, 2010","balance":"$4,234.54"},{"first":"Bernadine","last":"Harvey","email":"Bernadine.Harvey@elyse.biz","address":"642 Emiliano Inlet","created":"January 31, 2015","balance":"$9,384.27"},{"first":"Marc","last":"King","email":"Marc.King@merritt.name","address":"989 Hammes Trail","created":"April 21, 2012","balance":"$3,351.08"},{"first":"Earnestine","last":"Anderson","email":"tanwolf84@gmail.com","address":"36161 Witting Radial","created":"June 12, 2018","balance":"$5,559.19"},{"first":"Ward","last":"Lueilwitz","email":"lavendersquirrel03@gmail.com","address":"0842 Dakota Stream","created":"November 21, 2011","balance":"$9,289.93"},{"first":"Donny","last":"Lubowitz","email":"plumrabbit85@gmail.com","address":"463 Karianne Springs","created":"March 16, 2014","balance":"$7,741.66"},{"first":"Marcella","last":"Leuschke","email":"violetsquirrel11@gmail.com","address":"480 Gregorio Turnpike","created":"February 5, 2011","balance":"$8,241.33"},{"first":"Reyna","last":"Weber","email":"limesquirrel76@gmail.com","address":"34324 Gia Drive","created":"December 5, 2010","balance":"$4,873.76"},{"first":"Carleton","last":"Flatley","email":"yellowsquirrel43@gmail.com","address":"85960 Nicholaus Square","created":"October 2, 2014","balance":"$5,416.88"},{"first":"Gennaro","last":"Stoltenberg","email":"Gennaro.Stoltenberg@jeanne.net","address":"04908 Osborne Squares","created":"June 13, 2014","balance":"$7,116.43"},{"first":"Vince","last":"Barrows","email":"Vince.Barrows@eveline.name","address":"05730 Koch Expressway","created":"October 22, 2016","balance":"$9,541.23"},{"first":"Mathias","last":"Kessler","email":"redsquirrel56@gmail.com","address":"53610 Reinger Pines","created":"March 17, 2011","balance":"$3,134.63"},{"first":"Noel","last":"Miller","email":"Noel.Miller@jaleel.name","address":"17397 Icie Crossroad","created":"February 3, 2019","balance":"$6,188.25"},{"first":"Aimee","last":"Ebert","email":"salmonfrog48@gmail.com","address":"7858 Bella Cliffs","created":"March 13, 2012","balance":"$4,072.71"},{"first":"Jimmy","last":"Champlin","email":"tealturtle77@gmail.com","address":"5921 Lesch Parkways","created":"August 31, 2011","balance":"$80.89"},{"first":"Matteo","last":"Lockman","email":"yellowfrog25@gmail.com","address":"446 Friesen Ways","created":"March 22, 2014","balance":"$4,558.35"},{"first":"Myrtice","last":"McClure","email":"salmonturtle36@gmail.com","address":"483 Jadyn Centers","created":"June 20, 2014","balance":"$7,156.68"},{"first":"Javonte","last":"Towne","email":"Javonte.Towne@edmund.info","address":"7419 Rosario Extension","created":"March 24, 2018","balance":"$7,027.71"},{"first":"Shaniya","last":"DuBuque","email":"Shaniya.DuBuque@ebony.com","address":"938 Rossie Mall","created":"February 10, 2016","balance":"$8,419.62"},{"first":"Trace","last":"Champlin","email":"orchidwolf66@gmail.com","address":"287 Pouros Cape","created":"June 6, 2011","balance":"$6,531.60"},{"first":"Murray","last":"Shields","email":"maroongiraffe37@gmail.com","address":"2622 Von Underpass","created":"January 27, 2014","balance":"$5,868.12"},{"first":"Doris","last":"Wunsch","email":"Doris.Wunsch@francesca.biz","address":"126 Carlee Shore","created":"May 16, 2010","balance":"$5,372.08"},
+        {"first":"Adan","last":"Konopelski","email":"violetrabbit91@gmail.com","address":"412 Fatima Locks","created":"April 15, 2011","balance":"$8,284.94"},{"first":"Holly","last":"Mertz","email":"purplewolf09@gmail.com","address":"374 Clifton Coves","created":"June 27, 2018","balance":"$8,999.18"},{"first":"Serenity","last":"Koelpin","email":"pinkfrog15@gmail.com","address":"55293 Adrien Lane","created":"March 28, 2010","balance":"$4,150.97"},{"first":"Granville","last":"Connelly","email":"Granville.Connelly@cortney.net","address":"310 Denesik Square","created":"January 5, 2016","balance":"$7,977.42"},{"first":"Marcelina","last":"Harris","email":"Marcelina.Harris@yasmeen.net","address":"869 Adella Lodge","created":"March 9, 2014","balance":"$532.59"},{"first":"Griffin","last":"Gibson","email":"Griffin.Gibson@maxie.info","address":"26940 Dax Fort","created":"September 21, 2013","balance":"$1,931.03"},{"first":"Lawrence","last":"Bruen","email":"Lawrence.Bruen@heaven.biz","address":"16614 Fahey Vista","created":"March 17, 2018","balance":"$1,058.37"}];
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+<!-- <p *app-if-directive = "oddVal%2 != 0" app-highlighter>{{oddVal}}</p> -->
+<ng-template [app-if-directive]= "oddVal%2 != 0" >
+    <p app-highlighter>{{oddVal}}</p>
+    <!-- <p (mouseover)="updateStyle($event)">{{oddVal}}</p> -->
+</ng-template>
