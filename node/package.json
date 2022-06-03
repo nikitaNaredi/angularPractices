@@ -12,6 +12,6 @@
     "express": "*"
   },
   "devDependencies": {
-    "@angular/core": "^8.2.14"
+    "@angular/core": "^11.0.5"
   }
 }
